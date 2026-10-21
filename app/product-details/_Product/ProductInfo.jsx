@@ -30,6 +30,7 @@ const ProductInfo = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState(false);
+  const [error, setError] = useState("");
   const timerRef = useRef(null);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
@@ -63,6 +64,8 @@ const ProductInfo = ({ product }) => {
     if (!email || !productDocumentId) return;
 
     setLoading(true);
+    setError("");
+    setAdded(false);
 
     CartApis.getUserCartItems(email)
       .then((res) => {
@@ -108,7 +111,10 @@ const ProductInfo = ({ product }) => {
         clearTimeout(timerRef.current);
         timerRef.current = setTimeout(() => setAdded(false), 2500);
       })
-      .catch((err) => console.error("Strapi:", err.response?.data ?? err))
+      .catch((err) => {
+        console.error("Strapi:", err.response?.data ?? err);
+        setError("We couldn’t add this to your cart. Please try again.");
+      })
       .finally(() => setLoading(false));
   };
 
@@ -173,6 +179,15 @@ const ProductInfo = ({ product }) => {
           </dd>
         </div>
       </dl>
+
+      {error && (
+        <p
+          role="alert"
+          className="mt-4 rounded-xl bg-rose-50 px-3 py-2 text-sm font-medium text-rose-700"
+        >
+          {error}
+        </p>
+      )}
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="inline-flex h-12 items-center justify-between rounded-xl border border-slate-200 bg-white px-1 sm:w-36">

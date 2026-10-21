@@ -138,11 +138,11 @@ const ProductSection = () => {
               </span>
               <div>
                 <p className="text-sm font-semibold text-slate-900">
-                  We couldn’t load the products
+                  The store is temporarily offline
                 </p>
                 <p className="mt-1 max-w-sm text-sm text-slate-600">
-                  The store is temporarily unavailable. Please try again in a
-                  moment.
+                  We couldn’t reach the catalogue. Please try again in a
+                  moment — your account and cart are unaffected.
                 </p>
               </div>
               <button
