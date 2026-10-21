@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log
+.tmp
+.cache
+.env
+.env.*
+!.env.production.example
+.git
+.gitignore
+dist
+build
+.strapi
+.strapi-updater.json
+exports
+coverage
+*.log

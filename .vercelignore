@@ -1,0 +1,9 @@
+# لا ترفع مشروع Strapi مع الفرونت — بيتم رفعه على استضافة منفصلة
+my-strapi-project
+
+node_modules
+.next
+.vercel
+.git
+*.log
+Source
